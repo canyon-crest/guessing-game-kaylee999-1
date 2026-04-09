@@ -41,7 +41,7 @@ function play() {
         }
         levels[i].disabled = true;
     }
-    msg.textContent = "Guess a number 1-" + range;
+    msg.textContent = "Guess a number 1-" + range + ", "+playerName;
     answer = Math.floor(Math.random() * range) + 1;
     guessCount = 0;
 
