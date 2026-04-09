@@ -5,6 +5,9 @@ let playerName = prompt("Please enter your name:");
 if (!playerName) {
     playerName = "Player";
 }
+else {
+    playerName = playerName.charAt(0).toUpperCase() + playerName.slice(1).toLowerCase();
+}
 
 let answer = 0;
 let guessCount = 0;
