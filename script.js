@@ -13,8 +13,10 @@ let answer = 0;
 let guessCount = 0;
 const scores = [];
 let range = 0;
+let firstTryWins = 0;
 
 const msg = document.getElementById("msg");
+const firstTryWinsEl = document.getElementById("firstTryWins");
 const wins = document.getElementById("wins");
 const avgScore = document.getElementById("avgScore");
 const guess = document.getElementById("guess");
@@ -71,6 +73,12 @@ function makeGuess() {
 
     guessCount++;
     if (currentGuess == answer) {
+        if (guessCount < 2) {
+            firstTryWins++;
+            if (firstTryWinsEl) {
+                firstTryWinsEl.textContent = "First try wins: " + firstTryWins;
+            }
+        }
         msg.textContent = "Correct, " + playerName + "! It took " + guessCount + " tries.";
         let endTime = new Date();
         let timeTaken = Math.round((endTime - startTime) / 1000); 
@@ -120,7 +128,6 @@ function giveUp() {
     updateScore(range); 
     resetGame();
 }
-
 
 function updateDateTime() {
     const now = new Date();
