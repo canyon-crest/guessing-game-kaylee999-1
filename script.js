@@ -1,7 +1,6 @@
 
 
 // add javascript here
-let guess = 0;
 let answer = 0;
 let guessCount = 0;
 const scores = [];
@@ -69,7 +68,7 @@ function updateScore(score){
 }
 
 function resetGame(){
-    msg.textContent = "";
+    guess.value = "";
     guessBtn.disabled = true;
     giveUpBtn.disabled = true;
     playBtn.disabled = false;
