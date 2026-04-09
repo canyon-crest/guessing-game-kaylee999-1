@@ -32,21 +32,19 @@ function makeGuess(){
     let guess = parseInt(document.getElementById("guess").value);
     if(isNaN(guess) || guess<1 || guess>range){
         msg.textContent = "Please enter a valid number";
-        return;
-
+        return; 
     }
     guessCount++;
     if(guess == answer){
-        msg.textContent = "Correct! It took "+ guessCount + " tries.";
+        msg.textContent = "Correct! It took " + guessCount + " tries.";
         updateScore(guessCount);
         resetGame();
     }
-    else if(guess<answer){
-        msg.textContent = "Too low, try again.";
+    else if (guess < answer){
+        msg.textContent = "Too low, try again."
     }
-
-    else{
-        msg.textContent = "Too high, try again.";
+    else {
+        msg.textContent = "Too high, try again."
     }
 }
 
