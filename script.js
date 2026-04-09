@@ -98,6 +98,8 @@ function resetGame(){
 
 }
 
+document.getElementById("giveUpBtn").addEventListener("click", giveUp);
+
 function giveUp() {
     msg.textContent = "You gave up! The answer was " + answer + ".";
     updateScore(range); // Sets score to the max range
