@@ -1,10 +1,15 @@
 
 
 // add javascript here
+let playerName = prompt("Please enter your name:");
+if (!playerName){
+    playerName = "Player";
+}
 let answer = 0;
 let guessCount = 0;
 const scores = [];
 let range = 0;
+
 
 document.getElementById("playBtn").addEventListener ("click", play);
 document.getElementById("guessBtn").addEventListener("click",makeGuess);
@@ -29,22 +34,37 @@ function play(){
 
 function makeGuess(){
     let guess = parseInt(document.getElementById("guess").value);
+let diff = Math.abs(guess - answer);
+    let proximityMsg = "";
+
+    if (diff <= 2) {
+        proximityMsg = " (Hot)";
+    } 
+    else if (diff <= 5) {
+        proximityMsg = " (Warm)";
+    } 
+    else {
+        proximityMsg = " (Cold)";
+    }
+
     if(isNaN(guess) || guess<1 || guess>range){
         msg.textContent = "Please enter a valid number";
         return; 
     }
     guessCount++;
     if(guess == answer){
-        msg.textContent = "Correct! It took " + guessCount + " tries.";
+        msg.textContent = "Correct, "+playerName+"! It took " + guessCount + " tries.";
         updateScore(guessCount);
         resetGame();
     }
     else if (guess < answer){
-        msg.textContent = "Too low, try again."
+        msg.textContent = "Too low, try again." + proximityMsg;
     }
     else {
-        msg.textContent = "Too high, try again."
+        msg.textContent = "Too high, try again." + proximityMsg;
     }
+
+
 }
 
 function updateScore(score){
@@ -77,6 +97,13 @@ function resetGame(){
     h.disabled = false;
 
 }
+
+function giveUp() {
+    msg.textContent = "You gave up! The answer was " + answer + ".";
+    updateScore(range); // Sets score to the max range
+    resetGame();
+}
+
 
 
 
