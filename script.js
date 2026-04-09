@@ -42,11 +42,11 @@ function makeGuess(){
         resetGame();
     }
     else if(guess<answer){
-        msg.textContent = "Too low, try again";
+        msg.textContent = "Too low, try again.";
     }
 
     else{
-        msg.textContent = "Too high, try again";
+        msg.textContent = "Too high, try again.";
     }
 }
 
